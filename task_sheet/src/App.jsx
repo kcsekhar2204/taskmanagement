@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Router>
         <Routes>
           <Route exact path='/' element={<TaskSheet />}/>

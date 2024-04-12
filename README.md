@@ -1,5 +1,6 @@
 # taskmanagement
-# Task Sheet
+
+## Task Sheet
 (Frontend folder)
 
 Installed and configured Tailwind CSS as a PostCSS plugin

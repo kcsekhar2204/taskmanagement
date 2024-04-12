@@ -8,6 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
 const TaskSheet = () => {
     const [tasks, setTasks] = useState([])
     const [showData, setShowData] = useState(tasks)
+    const [sortBy, setSortBy] = useState('')
     const [doAdd, setAdd] = useState(false)
 
     const taskListCollectionRef = collection(db, 'tasklist')
@@ -32,12 +33,13 @@ const TaskSheet = () => {
     }, [])
 
     const filter = (filterBy) => {
-        if (filterBy === 'All') setShowData(tasks)
-        else setShowData(tasks.filter(x => x.status === filterBy))
+        if (filterBy === 'All') sort(sortBy, tasks)
+        else sort(sortBy, tasks.filter(x => x.status === filterBy))
     }
 
-    const sort = (val) => {
-        let sortedData = [...showData];
+    const sort = (val, data) => {
+        setSortBy(val)
+        let sortedData = [...data];
         if (val === "Created recently") {
             sortedData = sortedData.sort((a, b) => b.id - a.id);
         } else if (val === "Created earliest") {
@@ -54,7 +56,7 @@ const TaskSheet = () => {
                 <div className="flex justify-between w-full">
                     <InputDropDown options={statusFilterOption} selectedValue={'All'} label="Filter By Status" onSelect={filter} />
                     <button className="hidden md:block" onClick={() => setAdd(!doAdd)}>Create</button>
-                    <InputDropDown options={["Created earliest", "Created recently"]} label="Sort by" onSelect={sort} />
+                    <InputDropDown options={["Created earliest", "Created recently"]} label="Sort by" onSelect={(e) => sort(e, showData)} />
                 </div>
                 <div className="flex justify-center mt-4">
                     <div className="md:w-3/5 w-full">
