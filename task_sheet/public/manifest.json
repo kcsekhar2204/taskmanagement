@@ -1,0 +1,15 @@
+{
+  "short_name": "Task Sheet App",
+  "name": "Task Management App by k_c_sekhar",
+  "icons": [
+    {
+      "src": "icons/logo.png",
+      "sizes": "8333x8333",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
