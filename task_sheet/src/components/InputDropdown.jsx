@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const InputDropDown = ({ label, options, selectedValue, onSelect }) => {
+const InputDropDown = ({ label, options, selectedValue, onSelect, props }) => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [isDisable, setDisable] = useState(null)
 
@@ -16,11 +16,12 @@ const InputDropDown = ({ label, options, selectedValue, onSelect }) => {
     };
 
     return (
-        <div className="dropdown">
+        <div className="dropdown w-full">
             {label && <div>{label}</div>}
             <select
+                {...props}
                 value={selectedOption}
-                onChange={(e) => handleSelect(e.target.value)}
+                onChange={(e) => props ? {} : handleSelect(e.target.value)}
                 className='border focus:outline-none focus:border-blue-500 focus:border-2 border-gray-500'
             >
                 <option value="" {...isDisable}>Select an option</option>

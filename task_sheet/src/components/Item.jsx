@@ -1,6 +1,7 @@
 import React from "react";
+import { deleteItem } from "../services/apiCalls";
 
-const Item = ({isOpen, taskData, setOpen, index}) => {
+const Item = ({isOpen, taskData, setOpen, index, setRender}) => {
 
     return (
         <>
@@ -12,7 +13,7 @@ const Item = ({isOpen, taskData, setOpen, index}) => {
             {isOpen === taskData?.id && <div className=" border-y px-2 pb-2">
                 {taskData?.description}
                 <div className="flex flex-row-reverse gap-4 justify-between md:justify-start">
-                    <button className="bg-[#CA0B00] text-white py-1 px-4 rounded-full transition ease-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ">Delete</button>
+                    <button className="bg-[#CA0B00] text-white py-1 px-4 rounded-full transition ease-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 " onClick={() => {deleteItem(taskData?.firebase_id); setRender(Date.now())}}>Delete</button>
                     <button className="bg-[#04AA6D] text-white py-1 px-4 rounded-full transition ease-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ">Update</button>
                 </div>
             </div>}
