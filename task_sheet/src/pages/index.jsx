@@ -79,7 +79,7 @@ const TaskSheet = () => {
                         <div className="w-full hidden md:flex items-center justify-center mb-4">
                             <input className="px-1 h-8 w-96 test-sm border border-4" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
                             <button className="border border-4 flex bg-[#FB5592] px-2 flex items-center justify-center h-8 transition ease-out delay-150 hover:scale-110 duration-300" onClick={() => setAdd(true)}>
-                                <img  className="h-4 fill-white" src='./icons/pencil.svg' />Create
+                                <img  className="h-4" src='./icons/pencil.svg' />Create
                             </button>
                         </div>
                         <Table data={showData} loading={loading} setRender={setRender}/>
@@ -90,7 +90,7 @@ const TaskSheet = () => {
             <Create title={newTitle} closeFunc={() => {setAdd(false); setNewTitle('')}} isOpen={doAdd} setRender={setRender}/>
             {/* Additional Mobile items */}
             <button className={`md:hidden absolute right-10 max-h-[80%] z-10 bottom-10`}>
-                <img src='./icons/Add.png' className={`h-12 w-12 transform duration-700 transition ease-in-out ${doAdd ? 'rotate-45' : ''}`} onClick={() => setAdd(true)} />
+                <img src='./icons/Add.png' alt="Create Task" className={`h-12 w-12 shadow-xl`} onClick={() => setAdd(true)} />
             </button>
         </>
     );

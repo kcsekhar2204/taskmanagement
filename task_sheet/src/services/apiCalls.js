@@ -1,4 +1,4 @@
-import { addDoc, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import { taskListCollectionRef } from "../utils/constants";
 import { db } from "../firebase.config";
 
@@ -35,4 +35,9 @@ export const postTaskList = async(data, callback, setRender) => {
 export const deleteItem = async(firebase_id) => {
     const taskDoc = doc(db, "tasklist", firebase_id);
     await deleteDoc(taskDoc)
+}
+
+export const updateItem = async(firebase_id, updatedValues) => {
+    const taskDoc = doc(db, "tasklist", firebase_id);
+    await updateDoc(taskDoc, {...updatedValues});
 }
