@@ -6,7 +6,7 @@ import { postTaskList } from "../services/apiCalls";
 
 const Create = ({ closeFunc, isOpen, title, setRender }) => {
 
-    const { register, handleSubmit, reset, watch, formState:{errors} } = useForm({
+    const { register, handleSubmit, reset, setValue, formState:{errors} } = useForm({
         defaultValues: {
           id: '',
           name: title,
@@ -14,6 +14,7 @@ const Create = ({ closeFunc, isOpen, title, setRender }) => {
           status: ''
         }
     }); 
+    setValue("name", title)
 
     const close = () => {
         reset()
